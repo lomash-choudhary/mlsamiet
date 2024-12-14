@@ -19,12 +19,12 @@ export function NavBar() {
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
           <img
-            src="/placeholder.svg"
+            src="https://www.mlsamiet.xyz/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75"
             alt="MLSA MIET Logo"
             width={40}
             height={40}
             className="h-10 w-10" />
-          <div className="flex flex-col">
+          <div className="flex flex-col justify-start items-start">
             <span className="text-xl font-bold">MLSA MIET</span>
             <span className="text-xs text-muted-foreground">Communicate. Collaborate. Create.</span>
           </div>
