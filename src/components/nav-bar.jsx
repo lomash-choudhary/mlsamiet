@@ -1,4 +1,3 @@
-import Link from "react-router-dom";
 import { Button } from '../components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../components/ui/sheet'
 import { Menu } from 'lucide-react'
@@ -9,10 +8,10 @@ export function NavBar() {
 
   const navItems = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
-    { href: '/events', label: 'Events' },
-    { href: '/highlights', label: 'Highlights' },
-    { href: '/team', label: 'Team' },
+    { href: '#about', label: 'About Us' },
+    { href: '#events', label: 'Events' },
+    { href: '#highlights', label: 'Highlights' },
+    { href: '#team', label: 'Team' },
   ]
 
   return (
@@ -32,12 +31,12 @@ export function NavBar() {
         </div>
         <nav className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
-            <Link
+            <a
               key={item.href}
-              href={item.href}
+              href={""}
               className="text-sm font-medium hover:text-primary">
               {item.label}
-            </Link>
+            </a>
           ))}
           <Button variant="default" size="sm">
             Join Us
@@ -53,13 +52,13 @@ export function NavBar() {
           <SheetContent side="right">
             <nav className="flex flex-col gap-4">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
                   className="text-sm font-medium hover:text-primary"
                   onClick={() => setIsOpen(false)}>
                   {item.label}
-                </Link>
+                </a>
               ))}
               <Button variant="default" size="sm" onClick={() => setIsOpen(false)}>
                 Join Us
