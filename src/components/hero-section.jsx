@@ -5,14 +5,13 @@ export function HeroSection() {
     <div className="container px-4 py-12 md:py-24">
       <div className="grid gap-8 md:grid-cols-2 items-center">
         <div className="flex flex-col gap-6 items-start">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl  tracking-tight font-spaceGrotesk">
             Communicate.
           </h1>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl  tracking-tight font-spaceGrotesk">
             Collaborate. Create.
           </h1>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight line-clamp-1">
-          </h1>
+
           <p className="text-lg text-muted-foreground items-start">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&apos;s standard dummy
