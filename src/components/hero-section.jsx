@@ -1,5 +1,5 @@
 import { Button } from "../components/ui/button";
-import img from "../assets/image.png"
+import img from "../assets/home-main-mlsa.png"
 
 
 export function HeroSection() {
