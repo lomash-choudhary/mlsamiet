@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 
 
@@ -58,5 +59,5 @@ export default {
       },
     },
   },
-  plugins: [(await import("tailwindcss-animate")).default],
+  plugins: [require("tailwindcss-animate")],
 };

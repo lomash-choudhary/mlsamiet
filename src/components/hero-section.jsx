@@ -1,4 +1,6 @@
 import { Button } from "../components/ui/button";
+import img from "../assets/image.png"
+
 
 export function HeroSection() {
   return (
@@ -26,7 +28,7 @@ export function HeroSection() {
         </div>
         <div className="relative h-[400px] md:h-[500px]">
           <img
-            src="/placeholder.svg"
+            src={img}
             alt="Collaborative illustration"
             className="object-contain"
           />
