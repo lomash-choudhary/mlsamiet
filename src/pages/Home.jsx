@@ -5,7 +5,7 @@ import AboutUsComponent from '../components/About-Us-Section';
 import HighlightsSection from '../components/Highlights';
 import LeadsSection from '../components/LeadsSection';
 import JoinUs from '../components/JoinUs';
-
+import ContactForm from '../components/Form';
 
 export default function Home() {
   return (
@@ -16,6 +16,7 @@ export default function Home() {
       <HighlightsSection />
       <LeadsSection />
       <JoinUs />
+      <ContactForm />
     </main>)
   );
 }
