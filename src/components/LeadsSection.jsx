@@ -16,10 +16,13 @@ export default function LeadsSection() {
   return (
     <div className="mt-[46px] mb-[18px]">
       <div className="flex justify-center mb-8">
-        <img src={meetLeadsSvg} alt="Meet The Leads" />
+        <img 
+          src={meetLeadsSvg} 
+          alt="Meet The Leads" 
+        />
       </div>
 
-      <div className="grid grid-cols-2 gap-12 px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 px-4 md:px-8">
         {leadsData.map((lead, index) => (
           <div key={index} className="flex flex-col items-center">
             <div className="w-full aspect-[16/10] border-2 border-black rounded-lg overflow-hidden">
