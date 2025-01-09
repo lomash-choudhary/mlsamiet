@@ -100,7 +100,7 @@ function NewFooter() {
           <Text as="p" $isSub={true} className='text-start'>
             &copy; {getYear()}{' '}
             <a
-              href="https://www.presence.devxoshakya.xyz"
+              href="https://mlsamiet.vercel.app"
               rel="noopener noreferrer"
               style={{ color: 'grey' }}
             >
