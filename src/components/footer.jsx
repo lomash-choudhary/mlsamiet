@@ -104,7 +104,7 @@ function NewFooter() {
               rel="noopener noreferrer"
               style={{ color: 'grey' }}
             >
-              Presence
+              MLSA MIET
             </a>{' '}
             | Website Made by <strong><a href='https://adslabs.devxoshakya.xyz' rel='noopener noreferrer'>ADSLabs</a></strong>
           </Text>
