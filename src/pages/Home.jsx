@@ -6,6 +6,7 @@ import HighlightsSection from '../components/Highlights';
 import LeadsSection from '../components/LeadsSection';
 import JoinUs from '../components/JoinUs';
 import ContactForm from '../components/Form';
+import NewFooter from '../components/footer';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <LeadsSection />
       <JoinUs />
       <ContactForm />
+      <NewFooter/>
     </main>)
   );
 }
