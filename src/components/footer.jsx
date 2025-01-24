@@ -41,7 +41,7 @@ const SocialIconsWrapper = styled.div`
 `;
 
 const FooterLogoImage = styled.img`
-  content: url('https://mlsamiet.xyz/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75');
+  content: url('https://scontent.fdel65-1.fna.fbcdn.net/v/t39.30808-1/358718180_779278604201368_4838672604086034516_n.png?stp=dst-png_s200x200&_nc_cat=111&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=Y-EDtmhUpWsQ7kNvgFDMM_6&_nc_zt=24&_nc_ht=scontent.fdel65-1.fna&_nc_gid=A1NNo2PDKJNpt561TYMpTYl&oh=00_AYAVQeRDOzohb32DrjiXuHBvGbrs1JMfV-5rLjVPC42qPg&oe=67993958');
   max-width: 4rem;
   height: auto;
   @media (min-width: 600px) {

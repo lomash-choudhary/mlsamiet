@@ -19,7 +19,7 @@ export function NavBar() {
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
           <img
-            src="https://www.mlsamiet.xyz/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75"
+            src="https://scontent.fdel65-1.fna.fbcdn.net/v/t39.30808-1/358718180_779278604201368_4838672604086034516_n.png?stp=dst-png_s200x200&_nc_cat=111&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=Y-EDtmhUpWsQ7kNvgFDMM_6&_nc_zt=24&_nc_ht=scontent.fdel65-1.fna&_nc_gid=A1NNo2PDKJNpt561TYMpTYl&oh=00_AYAVQeRDOzohb32DrjiXuHBvGbrs1JMfV-5rLjVPC42qPg&oe=67993958"
             alt="MLSA MIET Logo"
             width={40}
             height={40}
