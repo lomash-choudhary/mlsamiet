@@ -1,13 +1,11 @@
 import { Hono } from 'hono';
 import { google } from 'googleapis';
-// import bodyParser from 'hono/body-parser';
+import { handle } from 'hono/vercel';  // Import the Vercel-specific handler
 
-const app = new Hono();
-// app.use('*', bodyParser()); // Middleware for parsing JSON body
+const app = new Hono().basePath('/api');
 
 const SHEET_ID = '1jJRBPJQruotoB7zWT1npmjsULmk2oAo09AxjcGpXFEo'; // Replace with your Google Sheet ID
-const SERVICE_ACCOUNT_KEY = Bun.env.GOOGLE_SERVICE_ACCOUNT_KEY; // Load service account key from .env
-// console.log(JSON.parse(SERVICE_ACCOUNT_KEY || '{}'));
+const SERVICE_ACCOUNT_KEY = process.env.GOOGLE_SERVICE_ACCOUNT_KEY; // Load service account key from .env
 
 const auth = new google.auth.GoogleAuth({
   credentials: JSON.parse(SERVICE_ACCOUNT_KEY || '{}'),
@@ -16,8 +14,22 @@ const auth = new google.auth.GoogleAuth({
 
 const sheets = google.sheets({ version: 'v4', auth });
 
-app.get('/', (c) => c.text('Hono!'))
+app.use('*', async (c, next) => {
+  c.header('Access-Control-Allow-Origin', '*'); // Allow all origins
+  c.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allow all methods
+  c.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow specific headers
 
+  if (c.req.method === 'OPTIONS') {
+    c.json({}, 200);
+    return;
+  }
+
+  await next();
+});
+
+app.get('/', (c) => {
+  return c.json({ message: "Congrats! You've deployed Hono to Vercel" });
+});
 
 app.post('/contact', async (c) => {
   try {
@@ -28,46 +40,51 @@ app.post('/contact', async (c) => {
       return c.json({ error: 'Missing required fields' }, 400);
     }
 
-    // Append data to Google Sheets
-   // Get the current data in the sheet to find the last row with data
-   const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: SHEET_ID,
-    range: 'Sheet1!A:A', // Only get the first column to check for filled rows
-  });
+    // Get current data in the sheet to find the last row with data
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId: SHEET_ID,
+      range: 'Sheet1!A:A', // Get the first column to check for filled rows
+    });
 
-  // Find the last row with data
-  const rows = res.data.values || [];
-  const lastRow = rows.length;
-  const now = new Date();
+    const rows = res.data.values || [];
+    const lastRow = rows.length; // Last filled row
 
-  // Convert to human-readable format
-  const humanReadableDate = now.toLocaleString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    hour12: true, // 12-hour format (true) or 24-hour (false)
-  });
-  // Append the new data to the next available row
-  await sheets.spreadsheets.values.append({
-    spreadsheetId: SHEET_ID,
-    range: `Sheet1!A${lastRow + 1}`, // Append to the next available row
-    valueInputOption: 'USER_ENTERED',
-    requestBody: {
-      values: [[name, phone, email, message, humanReadableDate]],
-    },
-  });
+    const now = new Date();
 
+    // Convert to human-readable format
+    const humanReadableDate = now.toLocaleString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: true, // 12-hour format
+    });
+
+    // Append new data to the next available row
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: SHEET_ID,
+      range: `Sheet1!A${lastRow + 1}`, // Append to the next available row
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [[name, phone, email, message, humanReadableDate]],
+      },
+    });
 
     return c.json({ success: true, message: 'Data saved successfully!' });
   } catch (error) {
-    console.error(error);
+    console.error('Error saving data to Google Sheets:', error);
     return c.json({ error: 'Failed to save data' }, 500);
   }
 });
 
-export default app
-console.log('Server started successfully.');
+// Vercel needs the handler to be exported, use `handle()` to wrap the app.
+const handler = handle(app);
+
+export const GET = handler;
+export const POST = handler;
+export const PATCH = handler;
+export const PUT = handler;
+export const OPTIONS = handler;

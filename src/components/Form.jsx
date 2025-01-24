@@ -41,7 +41,7 @@ export default function ContactForm() {
     submissionData.count += 1;
     localStorage.setItem('submissionData', JSON.stringify(submissionData));
 
-    fetch('/contact', {
+    fetch('https://mlsa-server.vercel.app/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,6 +51,12 @@ export default function ContactForm() {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
     })
     .catch((error) => {
       console.error('Error:', error);
