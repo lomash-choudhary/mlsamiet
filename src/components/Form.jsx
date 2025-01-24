@@ -24,7 +24,38 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // Handle form data here
+
+    const today = new Date().toISOString().split('T')[0];
+    const submissionData = JSON.parse(localStorage.getItem('submissionData')) || { date: today, count: 0 };
+
+    if (submissionData.date !== today) {
+      submissionData.date = today;
+      submissionData.count = 0;
+    }
+
+    if (submissionData.count >= 5) {
+      alert("You have reached the maximum number of submissions for today.");
+      return;
+    }
+
+    submissionData.count += 1;
+    localStorage.setItem('submissionData', JSON.stringify(submissionData));
+
+    fetch('/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      console.log(formData);
+    });
   };
 
   return (
