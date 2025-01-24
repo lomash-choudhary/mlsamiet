@@ -1,16 +1,17 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Textarea } from '../components/ui/textarea';
+import React, { useState } from "react";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import image from "../assets/contact.png";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    message: '',
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -32,11 +33,7 @@ export default function ContactForm() {
         {/* Left side illustration */}
         <div className="relative hidden lg:block">
           <div className="absolute left-8 top-8 h-[400px] w-[400px] rounded-[40px] border bg-white p-4 shadow-sm">
-            <img
-              src="/placeholder.svg"
-              alt="Illustration"
-              className="rounded-[36px]"
-            />
+            <img src={image} alt="Illustration" className="rounded-[36px]" />
           </div>
           <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full bg-blue-50"></div>
           <div className="absolute -bottom-4 right-12 h-32 w-32 rounded-full bg-yellow-50"></div>
@@ -45,11 +42,14 @@ export default function ContactForm() {
         </div>
 
         {/* Right side form */}
-        <div className="relative rounded-[40px] bg-white p-8 shadow-lg">
+        <div className="relative rounded-[40px] bg-white p-8 border">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name Field */}
             <div className="space-y-2">
-              <label htmlFor="name" className="text-base font-semibold text-gray-700">
+              <label
+                htmlFor="name"
+                className="text-base font-semibold text-gray-700"
+              >
                 Name
               </label>
               <Input
@@ -64,7 +64,10 @@ export default function ContactForm() {
 
             {/* Phone Field */}
             <div className="space-y-2">
-              <label htmlFor="phone" className="text-base font-semibold text-gray-700">
+              <label
+                htmlFor="phone"
+                className="text-base font-semibold text-gray-700"
+              >
                 Phone No.
               </label>
               <Input
@@ -79,7 +82,10 @@ export default function ContactForm() {
 
             {/* Email Field */}
             <div className="space-y-2">
-              <label htmlFor="email" className="text-base font-semibold text-gray-700">
+              <label
+                htmlFor="email"
+                className="text-base font-semibold text-gray-700"
+              >
                 Email
               </label>
               <Input
@@ -95,7 +101,10 @@ export default function ContactForm() {
 
             {/* Message Field */}
             <div className="space-y-2">
-              <label htmlFor="message" className="text-base font-semibold text-gray-700">
+              <label
+                htmlFor="message"
+                className="text-base font-semibold text-gray-700"
+              >
                 Message (Optional)
               </label>
               <Textarea
@@ -114,7 +123,7 @@ export default function ContactForm() {
                 type="submit"
                 className="rounded-xl bg-black px-8 py-3 text-lg font-semibold text-white hover:bg-black/90"
               >
-                JOIN US
+                SUBMIT{" "}
               </Button>
             </div>
           </form>

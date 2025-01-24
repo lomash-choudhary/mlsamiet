@@ -3,10 +3,10 @@ import joinUsSvg from "../assets/joinus.svg";
 
 export default function JoinUs() {
   return (
-    <div className="flex justify-center mt-8">
+    <div className="flex items-center justify-center mt-8">
       <img 
         src={joinUsSvg} 
-        className="w-[280px] sm:w-[380px] md:w-[483px] h-auto max-h-[142px]" 
+        className="mx-auto h-16" 
         alt="Join Us"
       />
     </div>

@@ -14,7 +14,7 @@ export function HeroSection() {
             Collaborate. Create.
           </h1>
 
-          <p className="text-lg text-muted-foreground items-start">
+          <p className="text-lg text-muted-foreground justify-start text-left items-start">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&apos;s standard dummy
             text ever since the 1500s, when an unknown printer took a galley of
